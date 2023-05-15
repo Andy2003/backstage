@@ -114,7 +114,7 @@ export type MetadataResponseSerializedRule = {
   name: string;
   description: string;
   resourceType: string;
-  paramsSchema?: ReturnType<typeof zodToJsonSchema>;
+  paramsSchema?: ReturnType<typeof zodToJsonSchema<'jsonSchema2019-09'>>;
 };
 
 /**
@@ -370,7 +370,9 @@ export function createPermissionIntegrationRouter<
         name: rule.name,
         description: rule.description,
         resourceType: rule.resourceType,
-        paramsSchema: zodToJsonSchema(rule.paramsSchema ?? z.object({})),
+        paramsSchema: zodToJsonSchema(rule.paramsSchema ?? z.object({}), {
+          target: 'jsonSchema2019-09',
+        }),
       }),
     );
 

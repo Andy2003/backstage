@@ -125,9 +125,15 @@ describe('DefaultWorkflowRunner', () => {
         handler: fakeActionHandler,
         supportsDryRun: true,
         schema: {
-          input: z.object({
-            foo: z.number(),
-          }),
+          input: z
+            .object({
+              foo: z.number(),
+            })
+            .and(
+              z.object({
+                bar: z.string(),
+              }),
+            ),
         },
       }) as TemplateAction,
     );
@@ -196,7 +202,7 @@ describe('DefaultWorkflowRunner', () => {
       });
 
       await expect(runner.execute(task)).rejects.toThrow(
-        /Invalid input passed to action jest-zod-validated-action, instance requires property \"foo\"/,
+        'Invalid input passed to action jest-zod-validated-action, instance does not match allOf schema [subschema 0] with 1 error[s]:, instance requires property "foo", instance does not match allOf schema [subschema 1] with 1 error[s]:, instance requires property "bar"',
       );
     });
 
@@ -210,7 +216,7 @@ describe('DefaultWorkflowRunner', () => {
             id: 'test',
             name: 'name',
             action: 'jest-zod-validated-action',
-            input: { foo: 1 },
+            input: { foo: 1, bar: 'bar' },
           },
         ],
       });

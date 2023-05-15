@@ -51,9 +51,13 @@ export function makeFieldSchemaFromZod<
 > {
   return {
     schema: {
-      returnValue: zodToJsonSchema(returnSchema) as JSONSchema7,
+      returnValue: zodToJsonSchema(returnSchema, {
+        target: 'jsonSchema2019-09',
+      }) as JSONSchema7,
       uiOptions: uiOptionsSchema
-        ? (zodToJsonSchema(uiOptionsSchema) as JSONSchema7)
+        ? (zodToJsonSchema(uiOptionsSchema, {
+            target: 'jsonSchema2019-09',
+          }) as JSONSchema7)
         : undefined,
     },
     type: null as any,

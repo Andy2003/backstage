@@ -72,12 +72,12 @@ export const createTemplateAction = <
 ): TemplateAction<TActionInput, TActionOutput> => {
   const inputSchema =
     action.schema?.input && 'safeParseAsync' in action.schema.input
-      ? zodToJsonSchema(action.schema.input)
+      ? zodToJsonSchema(action.schema.input, { target: 'jsonSchema2019-09' })
       : action.schema?.input;
 
   const outputSchema =
     action.schema?.output && 'safeParseAsync' in action.schema.output
-      ? zodToJsonSchema(action.schema.output)
+      ? zodToJsonSchema(action.schema.output, { target: 'jsonSchema2019-09' })
       : action.schema?.output;
 
   return {

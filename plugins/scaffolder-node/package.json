@@ -31,7 +31,7 @@
     "jsonschema": "^1.2.6",
     "winston": "^3.2.1",
     "zod": "^3.21.4",
-    "zod-to-json-schema": "^3.20.4"
+    "zod-to-json-schema": "^3.21.1"
   },
   "devDependencies": {
     "@backstage/cli": "workspace:^"
