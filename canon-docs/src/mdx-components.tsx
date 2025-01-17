@@ -2,7 +2,6 @@ import React, { ReactNode } from 'react';
 import type { MDXComponents } from 'mdx/types';
 import Image, { ImageProps } from 'next/image';
 import { CodeBlock } from '@/components/CodeBlock';
-import { Heading } from '../../packages/canon/src/components/Heading';
 import { Box } from '../../packages/canon/src/components/Box';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
@@ -15,7 +14,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
             fontFamily: 'var(--docs-font)',
             fontSize: '3rem',
             fontWeight: 'var(--canon-font-weight-bold)',
-            margin: 0,
+            marginTop: '4rem',
+            marginBottom: '0.5rem',
           }}
         >
           {children as ReactNode}
@@ -36,30 +36,30 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </Box>
     ),
     h3: ({ children }) => (
-      <Box marginTop="xl" marginBottom="xs">
-        <h3
-          style={{
-            fontFamily: 'var(--docs-font)',
-            fontSize: '1.25rem',
-            fontWeight: 'var(--canon-font-weight-bold)',
-          }}
-        >
-          {children as ReactNode}
-        </h3>
-      </Box>
+      <h3
+        style={{
+          fontFamily: 'var(--docs-font)',
+          fontSize: '1.25rem',
+          fontWeight: 'var(--canon-font-weight-bold)',
+          marginTop: '2rem',
+          marginBottom: '0.5rem',
+        }}
+      >
+        {children as ReactNode}
+      </h3>
     ),
     p: ({ children }) => (
-      <Box marginBottom="sm">
-        <p
-          style={{
-            fontFamily: 'var(--docs-font)',
-            fontSize: '1rem',
-            lineHeight: '1.5',
-          }}
-        >
-          {children as ReactNode}
-        </p>
-      </Box>
+      <p
+        style={{
+          fontFamily: 'var(--docs-font)',
+          fontSize: '1rem',
+          lineHeight: '1.5',
+          marginTop: '0',
+          marginBottom: '1rem',
+        }}
+      >
+        {children as ReactNode}
+      </p>
     ),
     a: ({ children, href }) => (
       <a href={href} style={{ color: 'var(--canon-text-primary)' }}>
